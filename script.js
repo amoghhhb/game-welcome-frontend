@@ -3,7 +3,7 @@ document.getElementById('nameForm').addEventListener('submit', async function(e)
 
   const fullName = document.getElementById('fullName').value;
 
-  const res = await fetch('/save-name', {
+  const res = await fetch('https://game-backend.onrender.com/save-name', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
