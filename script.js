@@ -1,19 +1,26 @@
-document.getElementById('nameForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
+document.getElementById("gameForm").addEventListener("submit", async function (event) {
+      event.preventDefault(); // Prevent actual form submit
 
-  const fullName = document.getElementById('fullName').value;
+      const name = document.getElementById("fullName").value;
 
-  const res = await fetch('https://game-backend-ktgk.onrender.com', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ name: fullName })
-  });
+      try {
+        const response = await fetch("https://your-railway-backend-url.com/api/save-name", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ fullName: name })
+        });
 
-  if (res.ok) {
-    window.location.href = '/next.html';
-  } else {
-    alert('Failed to save name.');
-  }
-});
+        if (response.ok) {
+          alert("Name submitted successfully!");
+          // Optionally redirect
+          window.location.href = "game.html";
+        } else {
+          alert("Failed to submit. Try again.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred.");
+      }
+    });

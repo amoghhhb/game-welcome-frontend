@@ -1,50 +1,170 @@
+:root {
+    --gradient-primary: linear-gradient(90deg, #ff6a00 0%, #ee0979 100%);
+    --gradient-background: linear-gradient(180deg, #1d1e1f 0%, #2b5263 111.33%);
+    --color-white: #ffffff;
+    --color-input-bg: #d9d9d9;
+    --color-input-text: #4d4d4d;
+    --shadow-text: 4px 4px 6px 0px rgba(0, 0, 0, 0.6);
+    --shadow-input-inset: inset 0px 7px 4px 1px rgba(0, 0, 0, 0.6);
+}
+
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, #1f1f1f, #2d697e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  color: white;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--gradient-background);
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
-.container {
-  text-align: center;
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
-h1 {
-  font-size: 2em;
-  margin-bottom: 2rem;
-}
+/* CSS from section:hero */
+.hero-container {
+        max-width: 1440px;
+        width: 100%;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
-input {
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  width: 250px;
-  font-size: 1rem;
-}
+    .hero-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 1.5;
+        color: var(--color-white);
+        margin: 0;
+        /* Spacing: top of form group (365) - bottom of title (138+190=328) = 37px */
+        margin-bottom: 37px;
+    }
 
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
+    .hero-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 428px; /* Based on Group 2 width */
+    }
 
-button {
-  margin-top: 20px;
-  padding: 10px 30px;
-  border: none;
-  border-radius: 25px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: white;
-  background: linear-gradient(to right, orange, deeppink);
-  cursor: pointer;
-  transition: transform 0.2s;
-}
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        /* Spacing: top of button (637) - bottom of form group (365+101.8=466.8) = 170.2px */
+        margin-bottom: 170px;
+    }
 
-button:hover {
-  transform: scale(1.05);
-}
+    .form-label {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.21; /* 24.2px / 20px */
+        color: var(--color-white);
+        /* Spacing: top of input rect (395.2) - top of label (365) = 30.2px */
+        margin-bottom: 30px;
+    }
+
+    .form-input {
+        background-color: var(--color-input-bg);
+        border-radius: 30px;
+        box-shadow: var(--shadow-input-inset);
+        border: none;
+        width: 100%;
+        max-width: 399px; /* From figma rect width */
+        height: 72px;
+        padding: 0 20px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 1.21; /* 29px / 24px */
+        color: var(--color-input-text);
+        text-align: center;
+    }
+
+    .form-input::placeholder {
+        color: var(--color-input-text);
+        opacity: 1;
+    }
+
+    .submit-button {
+        background: var(--gradient-primary);
+        border-radius: 33px;
+        width: 230px;
+        height: 69px;
+        border: none;
+        cursor: pointer;
+        color: var(--color-white);
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 1.21; /* 38.7px / 32px */
+        text-shadow: var(--shadow-text);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .submit-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(238, 9, 121, 0.4);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 36px;
+        }
+        .form-group {
+            margin-bottom: 120px;
+        }
+        .form-input {
+            font-size: 20px;
+            height: 60px;
+        }
+        .submit-button {
+            font-size: 28px;
+            width: 200px;
+            height: 60px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-container {
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+        .hero-title {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        .form-group {
+            margin-bottom: 80px;
+        }
+        .form-label {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .form-input {
+            font-size: 18px;
+            height: 55px;
+        }
+        .submit-button {
+            font-size: 24px;
+            width: 180px;
+            height: 55px;
+        }
+    }
