@@ -1,7 +1,7 @@
-@ -0,0 +1,11 @@
 {
   "name": "game-backend",
   "version": "1.0.0",
+  "description": "Backend server for saving player names",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
